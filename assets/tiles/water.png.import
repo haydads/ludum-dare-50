@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elbow_pipe.png-df05bac7d3732316f187edd795cdaf7c.stex"
+path="res://.import/water.png-6ee55e3d64f9a08d57af89d412298952.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pipes/elbow/elbow_pipe.png"
-dest_files=[ "res://.import/elbow_pipe.png-df05bac7d3732316f187edd795cdaf7c.stex" ]
+source_file="res://assets/tiles/water.png"
+dest_files=[ "res://.import/water.png-6ee55e3d64f9a08d57af89d412298952.stex" ]
 
 [params]
 

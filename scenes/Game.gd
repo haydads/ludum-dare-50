@@ -9,7 +9,7 @@ var tile_order : Array = []
 onready var ExclusionMap = get_node("Maps/Exclusion")
 onready var PipesMap = get_node("Maps/Pipes")
 onready var PreviewMap = get_node("Maps/Preview")
-onready var Grid = get_node("Maps/Margin/Grid")
+onready var Grid = get_node("Maps/Grid")
 
 
 func _process(_delta):
@@ -48,13 +48,13 @@ func generate_tiles() -> Array:
 	randomize()
 	var pipes = [0, 1, 2, 3, 4, 5]
 	var options : Array = []
-	for i in 3: options.append_array(pipes)
+	for i in 1: options.append_array(pipes)
 	options.shuffle()
 	return options
 
 
 func get_mouse_position() -> Vector2:
 	var position = get_global_mouse_position() - get_node("Maps").position
-	position.x = clamp(position.x, 64, 64 + 15 * 64)
-	position.y = clamp(position.y, 64, 64 + 15 * 64)
+	position.x = clamp(position.x, 64, 64 + 14 * 64)
+	position.y = clamp(position.y, 64, 64 + 17 * 64)
 	return position
