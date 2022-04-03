@@ -1,0 +1,205 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://resources/tilemaps/Pipes.tres" type="TileSet" id=1]
+[ext_resource path="res://scripts/Water.gd" type="Script" id=2]
+[ext_resource path="res://scenes/game/Game.gd" type="Script" id=3]
+[ext_resource path="res://resources/tilemaps/Water.tres" type="TileSet" id=4]
+[ext_resource path="res://assets/tiles/exclusion.png" type="Texture" id=5]
+[ext_resource path="res://assets/grid.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/water_dial.png" type="Texture" id=7]
+[ext_resource path="res://resources/fonts/Rubik24.tres" type="DynamicFont" id=8]
+[ext_resource path="res://resources/fonts/Rubik48.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/textures/pipes/pipe_2.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/pipe_dial.png" type="Texture" id=12]
+[ext_resource path="res://resources/tilemaps/Dirt.tres" type="TileSet" id=14]
+[ext_resource path="res://resources/theme/default_theme.tres" type="Theme" id=16]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.145098, 0.109804, 0.0823529, 1 )
+
+[sub_resource type="TileSet" id=1]
+0/name = "Exclusion"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="Animation" id=7]
+resource_name = "GameOver"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 720 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.52549, 1, 0.501961 ), Color( 0, 0.52549, 1, 0.501961 ), Color( 0, 0.52549, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "go_to_game_over"
+} ]
+}
+
+[node name="Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 3 )
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 6 )
+
+[node name="Maps" type="Node2D" parent="."]
+position = Vector2( 0, 9 )
+
+[node name="Dirt" type="TileMap" parent="Maps"]
+tile_set = ExtResource( 14 )
+format = 1
+tile_data = PoolIntArray( 65537, 0, 131074, 65538, 0, 131073, 65539, 0, 0, 65540, 0, 196609, 65541, 0, 65538, 65542, 0, 2, 65543, 0, 131075, 65544, 0, 3, 65545, 0, 65538, 65546, 0, 196609, 65547, 0, 2, 65548, 0, 65538, 65549, 0, 65538, 65550, 0, 196611, 131073, 0, 65537, 131074, 0, 65539, 131075, 0, 65536, 131076, 0, 65539, 131077, 0, 3, 131078, 0, 131072, 131079, 0, 131073, 131080, 0, 65536, 131081, 0, 131073, 131082, 0, 2, 131083, 0, 65537, 131084, 0, 131075, 131085, 0, 131074, 131086, 0, 3, 196609, 0, 65538, 196610, 0, 131075, 196611, 0, 131074, 196612, 0, 65536, 196613, 0, 65538, 196614, 0, 65538, 196615, 0, 131073, 196616, 0, 196609, 196617, 0, 0, 196618, 0, 0, 196619, 0, 131075, 196620, 0, 65539, 196621, 0, 2, 196622, 0, 65537, 262145, 0, 196610, 262146, 0, 1, 262147, 0, 65538, 262148, 0, 65538, 262149, 0, 196609, 262150, 0, 65537, 262151, 0, 1, 262152, 0, 65536, 262153, 0, 65538, 262154, 0, 1, 262155, 0, 196611, 262156, 0, 131073, 262157, 0, 65537, 262158, 0, 65539, 327681, 0, 65536, 327682, 0, 196611, 327683, 0, 1, 327684, 0, 131073, 327685, 0, 131072, 327686, 0, 196609, 327687, 0, 196610, 327688, 0, 65537, 327689, 0, 65539, 327690, 0, 196608, 327691, 0, 1, 327692, 0, 65536, 327693, 0, 65536, 327694, 0, 196609, 393217, 0, 65538, 393218, 0, 196609, 393219, 0, 65537, 393220, 0, 0, 393221, 0, 3, 393222, 0, 131073, 393223, 0, 131074, 393224, 0, 65538, 393225, 0, 65536, 393226, 0, 65537, 393227, 0, 3, 393228, 0, 196611, 393229, 0, 131074, 393230, 0, 1, 458753, 0, 3, 458754, 0, 65537, 458755, 0, 65536, 458756, 0, 65538, 458757, 0, 196608, 458758, 0, 131074, 458759, 0, 0, 458760, 0, 131073, 458761, 0, 65539, 458762, 0, 65539, 458763, 0, 65537, 458764, 0, 196611, 458765, 0, 196609, 458766, 0, 0, 524289, 0, 196609, 524290, 0, 131074, 524291, 0, 131075, 524292, 0, 196608, 524293, 0, 65538, 524294, 0, 131072, 524295, 0, 196608, 524296, 0, 196609, 524297, 0, 3, 524298, 0, 3, 524299, 0, 0, 524300, 0, 2, 524301, 0, 196608, 524302, 0, 196609, 589825, 0, 131072, 589826, 0, 65538, 589827, 0, 131073, 589828, 0, 65538, 589829, 0, 65538, 589830, 0, 65539, 589831, 0, 131073, 589832, 0, 196610, 589833, 0, 1, 589834, 0, 3, 589835, 0, 196610, 589836, 0, 0, 589837, 0, 131073, 589838, 0, 0 )
+
+[node name="Grid" type="TextureRect" parent="Maps"]
+visible = false
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 1024.0
+margin_bottom = 640.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+stretch_mode = 2
+
+[node name="Exclusion" type="TileMap" parent="Maps"]
+tile_set = SubResource( 1 )
+format = 1
+tile_data = PoolIntArray( 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 851978, 0, 0, 917512, 0, 0 )
+
+[node name="Pipes" type="TileMap" parent="Maps"]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 327695, 5, 0, 327696, 5, 0, 327697, 5, 0, 327698, 5, 0, 327699, 5, 0, 327700, 6, 0 )
+
+[node name="Water" type="TileMap" parent="Maps"]
+tile_set = ExtResource( 4 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( 327700, 5, 0 )
+script = ExtResource( 2 )
+
+[node name="Preview" type="TileMap" parent="Maps"]
+tile_set = ExtResource( 1 )
+format = 1
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="TextureProgress" type="TextureProgress" parent="Interface"]
+margin_left = 1020.0
+margin_top = 105.0
+margin_right = 1212.0
+margin_bottom = 297.0
+rect_min_size = Vector2( 192, 192 )
+mouse_filter = 2
+value = 69.0
+rounded = true
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 7 )
+fill_mode = 4
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="Interface/TextureProgress"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 9 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="Interface"]
+margin_left = 1020.0
+margin_top = 416.0
+margin_right = 1212.0
+margin_bottom = 447.0
+custom_fonts/font = ExtResource( 8 )
+text = "NEXT PIPE"
+align = 1
+valign = 1
+
+[node name="NextPipe" type="TextureRect" parent="Interface"]
+margin_left = 1052.0
+margin_top = 464.0
+margin_right = 1180.0
+margin_bottom = 592.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+
+[node name="GiveUp" type="Button" parent="Interface"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -260.0
+margin_top = -122.0
+margin_right = -68.0
+margin_bottom = -74.0
+rect_min_size = Vector2( 192, 48 )
+theme = ExtResource( 16 )
+custom_fonts/font = ExtResource( 8 )
+text = "GIVE UP"
+
+[node name="Animation" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Animation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Animation/Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 720.0
+color = Color( 0, 0.52549, 1, 0.501961 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation/Control"]
+root_node = NodePath("../..")
+anims/GameOver = SubResource( 7 )
